@@ -135,6 +135,20 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
 	/*
 		This is a method to check if a piece is a Black piece.
 	*/
+        private Boolean checkBlackOponent(int newX, int newY){
+            Boolean opponent;
+            Component c1 = chessBoard.findComponentAt(newX, newY);
+            JLabel awaitingPiece = (JLabel)c1;
+            String tmp1 = awaitingPiece.getIcon().toString();
+            if (((tmp1.contains("White")))){
+                opponent = true;
+            }
+            else{
+                opponent = false;
+            }
+            return opponent;
+        }
+        
 	private Boolean checkWhiteOponent(int newX, int newY){
 		Boolean oponent;
 		Component c1 = chessBoard.findComponentAt(newX, newY);
@@ -236,7 +250,36 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
 			If a Pawn makes it to the top of the other side, the Pawn can turn into any other piece, for 
 			demonstration purposes the Pawn here turns into a Queen.
 		*/
-		if(pieceName.equals("WhitePawn")){
+                if(pieceName.equals("BlackPawn")){
+                    // The pawn can move either two or one squares
+                    if(startY == 6){
+                    if((startX == landingX)&&(((startY-landingY)== 1)|| (startY-landingY)== 2)){
+                        if(!piecePresent(e.getX(), e.getY())){
+                            validMove = true;                            
+                        }
+                        else{
+                            validMove = false;
+                        }
+                    }
+                    else{
+                        validMove = false;
+                    }
+                }
+                else{ // the piece is nt in the starting postion..
+                    if((startX == landingX) && (((startY-landingY) == 1))){
+                        if(!piecePresent(e.getX(), e.getY())){
+                            validMove = true;                            
+                        }
+                        else{
+                            validMove = false;
+                        }                                            
+                    }
+                    else{
+                        validMove = false;
+                        }   
+                    }
+                }
+                else if(pieceName.equals("WhitePawn")){
 			if(startY == 1)
 			{
 				if((startX == (e.getX()/75))&&((((e.getY()/75)-startY)==1)||((e.getY()/75)-startY)==2))
