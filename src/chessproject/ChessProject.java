@@ -251,7 +251,45 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
 			If a Pawn makes it to the top of the other side, the Pawn can turn into any other piece, for 
 			demonstration purposes the Pawn here turns into a Queen.
 		*/
-                if(pieceName.equals("BlackPawn")){
+                
+                if(pieceName.contains("Knight")){
+                    validMove = true;
+                    if((((landingX <0)||(landingX >7)))||((landingY < 0)||(landingY >7))){            
+                        validMove = false;
+                    }
+                    else{
+                        if (((landingX == startX +1) && (landingY == startY +2)) || ((landingX == startX -1) && (landingY == startY + 2)) ||((landingX == startX + 2) && (landingY == startY +1)) || ((landingX == startX -2) && (landingY == startY +1)) ||((landingX == startX+1) && (landingY == startY-2)) || ((landingX == startX -1) && (landingY == startY -2))||((landingX == startX+2) && (landingY == startY -1))||((landingX== startX -2) && (landingY == startY -1)))
+                            {              
+                                if(piecePresent(e.getX(),(e.getY()))){
+                                    if(pieceName.contains("White")){
+                                        if(checkWhiteOponent(e.getX(), e.getY())){
+                                            validMove = true;
+                                        }
+                                        else{
+                                            validMove = false;
+                                        }
+                                    }
+                                    else{
+                                        if (checkBlackOponent(e.getX(), e.getY())){
+                                            validMove = true;
+                                        }
+                                        else{
+                                            validMove = false;
+                                        }
+                                    }
+                                }
+                                else{
+                                    validMove = true;
+                                }
+                            }
+                        else{
+                                validMove = false;
+                                }   
+                        }
+                }
+                
+                
+                else if(pieceName.equals("BlackPawn")){
                     // The pawn can move either two or one squares
                     if(startY == 6){
                     if((startX == landingX)&&(((startY-landingY)== 1)|| (startY-landingY)== 2)){
