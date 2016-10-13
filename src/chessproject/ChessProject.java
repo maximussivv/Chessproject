@@ -254,7 +254,7 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
                 
                 if(pieceName.contains("Bishop")){
                     Boolean inTheWay = false;
-                    int distance = Math.abs(startX - landingX);
+                    int distance = Math.abs(startX-landingX);
                     if(((landingX < 0) || (landingX > 7)) || ((landingY <0) || (landingY > 7))) {
                         validMove = false;
                     }
@@ -262,21 +262,21 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
                         validMove = true;
                         if(Math.abs(startX-landingX)==Math.abs(startY-landingY)){
                             if((startX-landingX < 0)&&(startY-landingY <0)){
-                                for(int i=0; i < distance; i++){
-                                    if(piecePresent((initialX+(i*75)),(initialY+(i*75)))){
+                                for(int i=0; i < distance;i++){
+                                    if(piecePresent((initialX+(i*75)), (initialY+(i*75)))){
                                         inTheWay = true;
                                     }
                                 }
                             }
                             else if((startX-landingX < 0)&&(startY-landingY >0)){
-                                for(int i =0; i < distance; i++){
+                                for(int i =0; i < distance;i++){
                                     if(piecePresent((initialX+(i*75)),(initialY-(i*75)))){
                                         inTheWay = true;
                                     }
                                 }
                             }
-                            else if((startX - landingX > 0) && (startY - landingY > 0)){
-                                for(int i =0; i < distance; i++){
+                            else if((startX-landingX > 0) && (startY-landingY > 0)){
+                                for(int i=0;i < distance;i++){
                                     if(piecePresent((initialX-(i*75)),(initialY-(i*75)))){
                                         inTheWay = true;
                                     }
