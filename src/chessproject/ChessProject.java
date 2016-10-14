@@ -252,6 +252,11 @@ public class ChessProject extends JFrame implements MouseListener, MouseMotionLi
 			demonstration purposes the Pawn here turns into a Queen.
 		*/
                 
+                
+                
+                
+                
+                
                 if(pieceName.contains("Bishop")){
                     Boolean inTheWay = false;
                     int distance = Math.abs(startX-landingX);
